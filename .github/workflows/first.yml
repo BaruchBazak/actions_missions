@@ -3,29 +3,25 @@ name: First action
 on: push
 
 jobs:
-  job1:
+  ubuntu:
     name: First job
     runs-on: ubuntu-latest
     steps:
-      -name: step one
-        run: date
-  job2:
+    - run: date
+  windows:
     name: Second job
     runs-on: windows-latest
     steps:
-      -name: step one
-        run: date
-  job3:
+    - run: date
+  macos:
     name: Third job
     runs-on: macos-latest
     steps:
-      -name: step one
-        run: date
-  job4:
+    - run: date
+  depends:
     name: Dependencies job
-    needs: [job1, job2, job3]
+    needs: [ubuntu, windows, macos]
     runs-on: ubuntu-latest
     steps:
-      -name: Final step
-        run: echo "you are done the mission !"
+    - run: echo "you are done the mission !"
 
